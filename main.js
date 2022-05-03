@@ -5,15 +5,15 @@ let solucion = async()=>{
     let config = {
         method : from.method,
         body: JSON.stringify({
-            num1 : Number(document.querySelector("#num1").value),
-            num2 : Number(document.querySelector("#num2").value),
-            num3 : Number(document.querySelector("#num3").value)
         })
     };
     let peticion = await fetch(from.action, config);
     let data = await peticion.json();
     cajamensaje.insertAdjacentHTML("beforeend", `<div>${data.respuesta}</div>`);
+
 }
+document.querySelector(".par").insertAdjacentText("beforeend", json.par);
+
 from.addEventListener("submit", (e)=>{
     switch (e.submitter.dataset.accion) {
         case "enviar":

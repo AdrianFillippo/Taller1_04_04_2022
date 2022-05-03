@@ -1,18 +1,18 @@
-let from = document.querySelector("#from1")
-let cajamensaje = document.querySelector(".solucion")
+let from = document.querySelector("#from1");
+let cajaMensaje = document.querySelector(".solucion");
 
 let solucion = async()=>{
     let config = {
         method : from.method,
         body: JSON.stringify({
+            N : Number(document.querySelector("#num").value),
         })
     };
     let peticion = await fetch(from.action, config);
-    let data = await peticion.json();
-    cajamensaje.insertAdjacentHTML("beforeend", `<div>${data.respuesta}</div>`);
-
+    let res = await peticion.json();
+    // cajaMensaje.insertAdjacentHTML("beforeend", res);
+    cajaMensaje.insertAdjacentHTML("beforeend", `<div>Respuesta del servidor: ${res.server} ${res.respuesta}</div`);
 }
-document.querySelector(".par").insertAdjacentText("beforeend", json.par);
 
 from.addEventListener("submit", (e)=>{
     switch (e.submitter.dataset.accion) {
@@ -20,12 +20,13 @@ from.addEventListener("submit", (e)=>{
             solucion();
             break;
         case "limpiar":
-            cajamensaje.innerHTML = "";
+            cajaMensaje.innerHTML = "";
             from.reset();
             break;
         default:
-            cajamensaje.insertAdjacentHTML("beforeend", `<div>El data-accion='${e.submitter.dataset.accion}' no esta configurado</div>`)
+            cajaMensaje.insertAdjacentHTML("beforeend", `<div>El <b>data-accion='${e.submitter.dataset.accion}'</b> no esta configurada</div>`);
             break;
-    }
+    } 
+
     e.preventDefault();
 })

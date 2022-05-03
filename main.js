@@ -6,7 +6,8 @@ let solucion = async()=>{
         method : from.method,
         body: JSON.stringify({
             num1 : Number(document.querySelector("#num1").value),
-            num2 : Number(document.querySelector("#num2").value)
+            num2 : Number(document.querySelector("#num2").value),
+            num3 : Number(document.querySelector("#num3").value)
         })
     };
     let peticion = await fetch(from.action, config);
